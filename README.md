@@ -36,7 +36,7 @@ func main() {
 
 	// Handle error
 	if res.Error != nil {
-		panic(err)
+		panic(res.Error)
 	}
 
 	// Use file path
@@ -76,7 +76,7 @@ func main() {
 	for _, file := range res {
 		// Handle error
 		if file.Error != nil {
-			panic(err)
+			panic(file.Error)
 		}
 
 		// Use file path
