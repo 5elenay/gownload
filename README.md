@@ -4,8 +4,8 @@ Go version of [pewn](https://github.com/5elenay/pewn). Allows you to Download fi
 
 ## Installation
 
-- Initialize your project with `go mod init <name>`.
-- Get the package with `go get github.com/5elenay/gownload`.
+-   Initialize your project with `go mod init <name>`.
+-   Get the package with `go get github.com/5elenay/gownload`.
 
 ## API Reference
 
@@ -25,14 +25,22 @@ import (
 )
 
 func main() {
-    // Create an option
+	// Create an option
 	option := gownload.Options{
 		Name:   "photo.png",
 		Folder: []string{"path", "to", "photos"},
 	}
 
-    // Download file.
-	gownload.Download("https://picsum.photos/500/300", option)
+	// Download file.
+	res := gownload.Download("https://picsum.photos/500/300", option)
+
+	// Handle error
+	if res.Error != nil {
+		panic(err)
+	}
+
+	// Use file path
+	fmt.Println(res.Path)
 }
 ```
 
@@ -48,21 +56,31 @@ import (
 )
 
 func main() {
-    // Create an option.
+	// Create an option.
 	option := gownload.Options{
 		Name:   "photo.png",
 		Folder: []string{"path", "to", "photos"},
 	}
 
-    // Make a string slice and add the url 10 times.
+	// Make a string slice and add the url 10 times.
 	var urls []string
 
 	for i := 0; i < 10; i++ {
 		urls = append(urls, "https://picsum.photos/500/300")
 	}
 
-    // Download all of the files.
-	gownload.DownloadMultiple(urls, option)
-}
+	// Download all of the files.
+	res := gownload.DownloadMultiple(urls, option)
 
+	// Loop through files
+	for _, file := range res {
+		// Handle error
+		if file.Error != nil {
+			panic(err)
+		}
+
+		// Use file path
+		fmt.Println(file.Path)
+	}
+}
 ```
