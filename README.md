@@ -2,6 +2,11 @@
 
 Go version of [pewn](https://github.com/5elenay/pewn). Allows you to Download file(s) easily.
 
+[![Size](https://img.shields.io/github/languages/code-size/5elenay/gownload)]()
+[![License](https://img.shields.io/github/license/5elenay/gownload)]()
+[![Stars](https://img.shields.io/github/stars/5elenay/gownload)]()
+[![Release](https://img.shields.io/github/v/release/5elenay/gownload)]()
+
 ## Installation
 
 - Initialize your project with `go mod init <name>`.
