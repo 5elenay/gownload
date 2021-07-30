@@ -9,6 +9,11 @@ import (
 
 // Download a file with Options.
 func Download(url string, option Options) Result {
+	// Edit option for local-save
+	if len(option.Folder) == 0 {
+		option.Folder = []string{"."}
+	}
+
 	// Send a GET request.
 	resp, err := http.Get(url)
 
