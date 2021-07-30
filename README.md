@@ -9,7 +9,7 @@ Go version of [pewn](https://github.com/5elenay/pewn). Allows you to Download fi
 
 ## API Reference
 
-Click [here](https://pkg.go.dev/github.com/5elenay/gownload) for API reference.
+Click [here](https://pkg.go.dev/github.com/5elenay/gownload@v0.2.0) for API reference.
 
 ## Example
 
