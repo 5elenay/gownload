@@ -5,7 +5,7 @@ import (
 	"strings"
 )
 
-func goroutineDownload(url string, option Options, channel chan error) {
+func goroutineDownload(url string, option Options, channel chan Result) {
 	channel <- Download(url, option)
 }
 
