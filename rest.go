@@ -39,3 +39,20 @@ func Download(url string, option Options) error {
 
 	return nil
 }
+
+// Download Multiple file at same time.
+// File names will be like photo_1.png, photo_2.png ...
+func DownloadMultiple(urls []string, option Options) []error {
+	channel := make(chan error)
+	var results []error
+
+	for index, url := range urls {
+		go goroutineDownload(url, renameFile(option, index+1), channel)
+	}
+
+	for range urls {
+		results = append(results, <-channel)
+	}
+
+	return results
+}
