@@ -2,6 +2,15 @@
 
 Go version of [pewn](https://github.com/5elenay/pewn). Allows you to Download file(s) easily.
 
+## Installation
+
+- Initialize your project with `go mod init <name>`.
+- Get the package with `go get github.com/5elenay/gownload`.
+
+## API Reference
+
+Click [here](https://pkg.go.dev/github.com/5elenay/gownload) for API reference.
+
 ## Example
 
 Download single file example

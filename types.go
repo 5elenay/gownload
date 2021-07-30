@@ -1,6 +1,6 @@
 package gownload
 
 type Options struct {
-	Name string
+	Name   string
 	Folder []string
 }
