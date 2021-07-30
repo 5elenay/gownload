@@ -4,8 +4,8 @@ Go version of [pewn](https://github.com/5elenay/pewn). Allows you to Download fi
 
 ## Installation
 
--   Initialize your project with `go mod init <name>`.
--   Get the package with `go get github.com/5elenay/gownload`.
+- Initialize your project with `go mod init <name>`.
+- Get the package with `go get github.com/5elenay/gownload`.
 
 ## API Reference
 
@@ -19,28 +19,26 @@ Download single file example
 package main
 
 import (
-	"fmt"
+    "fmt"
 
-	"github.com/5elenay/gownload"
+    "github.com/5elenay/gownload"
 )
 
 func main() {
-	// Create an option
-	option := gownload.Options{
-		Name:   "photo.png",
-		Folder: []string{"path", "to", "photos"},
-	}
+    // Create an option
+    option := gownload.Options{
+        Name:   "photo.png",
+        Folder: []string{"path", "to", "photos"},
+    }
 
-	// Download file.
-	res := gownload.Download("https://picsum.photos/500/300", option)
+    // Download file.
+    res := gownload.Download("https://picsum.photos/500/300", option)
 
-	// Handle error
-	if res.Error != nil {
-		panic(res.Error)
-	}
-
-	// Use file path
-	fmt.Println(res.Path)
+    // An helper function for gownload.Result which allows you to handle result and error easily.
+    res.Handle(res.Error, func(path string) {
+        // Use file path
+        fmt.Println(path)
+    })
 }
 ```
 
@@ -50,37 +48,36 @@ Download multiple-file example
 package main
 
 import (
-	"fmt"
+    "fmt"
 
-	"github.com/5elenay/gownload"
+    "github.com/5elenay/gownload"
 )
 
 func main() {
-	// Create an option.
-	option := gownload.Options{
-		Name:   "photo.png",
-		Folder: []string{"path", "to", "photos"},
-	}
+    // Create an option.
+    option := gownload.Options{
+        Name:   "photo.png",
+        Folder: []string{"path", "to", "photos"},
+    }
 
-	// Make a string slice and add the url 10 times.
-	var urls []string
+    // Make a string slice and add the url 10 times.
+    var urls []string
 
-	for i := 0; i < 10; i++ {
-		urls = append(urls, "https://picsum.photos/500/300")
-	}
+    for i := 0; i < 10; i++ {
+        urls = append(urls, "https://picsum.photos/500/300")
+    }
 
-	// Download all of the files.
-	res := gownload.DownloadMultiple(urls, option)
+    // Download all of the files.
+    results := gownload.DownloadMultiple(urls, option)
 
-	// Loop through files
-	for _, file := range res {
-		// Handle error
-		if file.Error != nil {
-			panic(file.Error)
-		}
-
-		// Use file path
-		fmt.Println(file.Path)
-	}
+    // Loop through files
+    for _, res := range results {
+        // An helper function for gownload.Result which allows you to handle result and error easily.
+        res.Handle(res.Error, func(path string) {
+            // Use file path
+            fmt.Println(path)
+        })
+    }
 }
+
 ```

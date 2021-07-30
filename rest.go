@@ -15,7 +15,7 @@ func Download(url string, option Options) Result {
 	if err != nil {
 		return Result{
 			Error: err,
-			Path: "",
+			Path:  "",
 		}
 	}
 
@@ -28,7 +28,7 @@ func Download(url string, option Options) Result {
 	if err != nil {
 		return Result{
 			Error: err,
-			Path: "",
+			Path:  "",
 		}
 	}
 
@@ -42,14 +42,14 @@ func Download(url string, option Options) Result {
 	if err != nil {
 		return Result{
 			Error: err,
-			Path: "",
+			Path:  "",
 		}
 	}
 
 	return Result{
-			Error: nil,
-			Path: filePath,
-		}
+		Error: nil,
+		Path:  filePath,
+	}
 }
 
 // Download Multiple file at same time.
